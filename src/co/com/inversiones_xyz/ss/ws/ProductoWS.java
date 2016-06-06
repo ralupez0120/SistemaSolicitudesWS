@@ -19,18 +19,26 @@ import co.com.inversiones_xyz.ss.service.ProductoService;
 import javassist.tools.rmi.RemoteException;
 
 /**
- * Servlet implementation class Servlet
- * Esta clase permite desplegar objetos logica del negocio en el navegador
- * @author: Rafael Luna Pérez
-			ralp2089@gmail.com
- * @version: 1.0
- * 			 05/05/2016
+ * Esta clase permite desplegar producto logica del negocio en el navegador
+ * @author:
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			3/06/2016
+ *
  */
 @Component
 @Path("producto")
 public class ProductoWS {
 	@Autowired 
 	ProductoService productoService;
+
+	/**
+	 * Desplegar productos obtenidos en el navegador
+	 * @return lista de productos obtenidos del sistema
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	public List<ProductoWSDto> obtener()throws RemoteException{

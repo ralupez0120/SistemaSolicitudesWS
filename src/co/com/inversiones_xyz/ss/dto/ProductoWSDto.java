@@ -2,18 +2,21 @@ package co.com.inversiones_xyz.ss.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 /**
- * Servlet implementation class Servlet
- * Esta clase permite desplegar objetos logica del negocio en el navegador
- * @author: Rafael Luna Pérez
-			ralp2089@gmail.com
- * @version: 1.0
- * 			 05/05/2016
+ * Esta clase permite desplegar productos en el navegador
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			3/06/2016
+ *
  */
 @XmlRootElement
 public class ProductoWSDto {
-	private int codigo;
-	private String nombre;
-	private String descripcion;
+	private int codigo; //identificador unico de un producto
+	private String nombre; //nombre que define al producto
+	private String descripcion; //descripcion del producto
+	
 	public int getCodigo() {
 		return codigo;
 	}

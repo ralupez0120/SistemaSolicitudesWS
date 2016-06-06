@@ -2,19 +2,22 @@ package co.com.inversiones_xyz.ss.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 /**
- * Servlet implementation class Servlet
- * Esta clase permite desplegar objetos logica del negocio en el navegador
- * @author: Rafael Luna Pérez
-			ralp2089@gmail.com
- * @version: 1.0
- * 			 05/05/2016
+ * Esta clase permite desplegar sucursal en el navegador
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			3/06/2016
+ *
  */
 @XmlRootElement
 public class SucursalWSDto {
-	private String codigo;
-	private String nombre;
-	private String direccion;
-	private String ciudad;
+	private String codigo; //codigo unico que identifica una sucursal
+	private String nombre; //nombre de la sucursal
+	private String direccion; //ubicacion geografica de la sucursal
+	private String ciudad; // ciudad donde esta ubicada la sucursal
+	
 	public String getCodigo() {
 		return codigo;
 	}

@@ -2,22 +2,25 @@ package co.com.inversiones_xyz.ss.dto;
 
 import javax.xml.bind.annotation.XmlRootElement;
 /**
- * Servlet implementation class Servlet
- * Esta clase permite desplegar objetos logica del negocio en el navegador
- * @author: Rafael Luna Pérez
-			ralp2089@gmail.com
- * @version: 1.0
- * 			 05/05/2016
+ * Esta clase permite desplegar solicitudes en el navegador
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			3/06/2016
+ *
  */
 @XmlRootElement
 public class SolicitudWSDto {
-	private int radicado;
-	private String nombres;
-	private String apellidos;
-	private String correo;
-	private String telefono;
-	private String celular;
-	private String descripcion;
+	private int radicado; //entero que identifica una solicitud 
+	private String nombres; //nombres del cliente que registra la solicitud
+	private String apellidos; //apellidos del cliente
+	private String correo; //email registrado por el cliente
+	private String telefono; //telefono del cliente
+	private String celular; //celular del cliente
+	private String descripcion; //descripcion de la solicitud
+	
 	public int getRadicado() {
 		return radicado;
 	}

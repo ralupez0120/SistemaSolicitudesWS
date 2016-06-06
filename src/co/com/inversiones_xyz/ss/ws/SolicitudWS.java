@@ -26,13 +26,16 @@ import co.com.inversiones_xyz.ss.service.SolicitudService;
 import javassist.tools.rmi.RemoteException;
 
 /**
- * Servlet implementation class Servlet
- * Esta clase permite desplegar objetos logica del negocio en el navegador
- * @author: Rafael Luna Pérez
-			ralp2089@gmail.com
- * @version: 1.0
- * 			 05/05/2016
+ * Esta clase permite desplegar solicitudes logica del negocio en el navegador
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			3/06/2016
+ *
  */
+
 @Component
 @Path("solicitud")
 public class SolicitudWS {
@@ -41,7 +44,12 @@ public class SolicitudWS {
 	@Autowired
 	SeguimientoService seguimientoService;
 	
-	
+	/**
+	 * Despliega las solicitudes obtenidas en el navegador
+	 * @param nombreUsuario: nombre del usuario que consulta
+	 * @return la lista de solicitudes obtenidas del sistema
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("mostrarsolicitudes")
@@ -67,6 +75,14 @@ public class SolicitudWS {
 		return lista;
 	}
 	
+	/**
+	 * Despliega la solicitud dada su radicado
+	 * @param radicado: identificador de la solicitud consultada
+	 * @param nombreUsuario: nombre de usuario del usuario responsable o con rol gerente de cuentas
+	 * @param codigoRol: codigo del rol que tiene asociado el usuario que consulta
+	 * @return la solicitud obtenida del sistema
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("porradicado/{radicado}/{nombreUsuario}/{codigoRol}")
@@ -90,7 +106,12 @@ public class SolicitudWS {
 		return solicitudWSDto;
 	}	
 	
-	
+	/**
+	 * Despliega las solicitudes asociadas a un usuario
+	 * @param nombreUsuario: nombre del usuario responsable
+	 * @return lista de solicitudes obtenidas del sistema
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("porusuario/{nombreUsuario}")
@@ -116,6 +137,12 @@ public class SolicitudWS {
 		return lista;
 	}
 	
+	/**
+	 * Despliega las solicitudes que tiene asociadas un usuario
+	 * @param nombreUsuario: nombre de usuario del usuario al que se quieren seguir las solicitudes que tiene asociadas
+	 * @return lista de solicitudes obtenidas del sistema
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("seguirsolicitudes/{nombreUsuario}")
@@ -141,6 +168,21 @@ public class SolicitudWS {
 		return lista;
 	}
 	
+	/**
+	 * Guardar nueva solicitud en el sistema con los datos ingresados desde el navegador
+	 * @param radicado: identificador de la solicitud
+	 * @param nombres: nombres del cliente que hace la solicitud
+	 * @param apellidos: apellidos del cliente
+	 * @param correo: email registrado por el cliente
+	 * @param telefono: telefono registrado por el cliente
+	 * @param celular: celular registrado por el cliente
+	 * @param descripcion: detalles de la solicitud
+	 * @param codigoSucursal: codigo de la sucursal donde se adquirió el producto
+	 * @param codigoTipo: codigo del tipo de la solicitud que hace el cliente
+	 * @param codigoProducto: codigo del producto que adquirió el cliente
+	 * @param idSeguimiento: identificador del seguimiento que se crea asociado a la solicitud
+	 * @throws RemoteException
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("guardarsolicitud")
@@ -157,6 +199,13 @@ public class SolicitudWS {
 		}
 	}
 
+	/**
+	 * Responder solicitud desde el navegador
+	 * @param id: identificador del seguimiento asociado a la solicitud
+	 * @param nombreUsuario: nombre del usuario que responde la solicitud
+	 * @param codigoRol: codigo del rol asociado al usuario que responde la solicitud
+	 * @throws RemoteException
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("respondersolicitud")
@@ -170,6 +219,14 @@ public class SolicitudWS {
 		}
 	}
 	
+	/**
+	 * Reasignar solicitud desde el navegador
+	 * @param id: identificador del seguimiento asociado a la solicitud
+	 * @param nombreUsuario: nombre de usuario del gerente de cuentas
+	 * @param nuevoResponsable: nombre de usuario del nuevo responsable asignado
+	 * @param codigoRol: codigo del rol del que reasigna la solicitud
+	 * @throws RemoteException
+	 */
 	@PUT
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("reasignarsolicitud")
@@ -183,6 +240,14 @@ public class SolicitudWS {
 		}
 	}
 	
+	/**
+	 * consultar resultado encuesta
+	 * @param radicado
+	 * @param nombreUsuario
+	 * @param codigoRol
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_XML)
 	@GET
 	@Path("resultadoencuesta/{radicado}/{nombreUsuario}/{codigoRol}")
@@ -198,6 +263,13 @@ public class SolicitudWS {
 		return resultado;
 	}
 	
+	/**
+	 * consultar los resultados de todas las encuestas
+	 * @param nombreUsuario
+	 * @param codigoRol
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	@Path("resultadosencuesta/{nombreUsuario}/{codigoRol}")
